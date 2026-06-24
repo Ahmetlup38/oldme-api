@@ -11,64 +11,60 @@ import (
 	"github.com/gogf/gf/v2/frame/g"
 )
 
-// ReadingDao is the data access object for the table reading.
-type ReadingDao struct {
+// WordDao is the data access object for the table word.
+type WordDao struct {
 	table    string             // table is the underlying table name of the DAO.
 	group    string             // group is the database configuration group name of the current DAO.
-	columns  ReadingColumns     // columns contains all the column names of Table for convenient usage.
+	columns  WordColumns        // columns contains all the column names of Table for convenient usage.
 	handlers []gdb.ModelHandler // handlers for customized model modification.
 }
 
-// ReadingColumns defines and stores column names for the table reading.
-type ReadingColumns struct {
-	Id         string //
-	Name       string // 书名
-	Author     string // 作者
-	Status     string // 状态: 1弃读 2完结 9在读
-	FinishedAt string // 读完时间
+// WordColumns defines and stores column names for the table word.
+type WordColumns struct {
+	Id      string //
+	Word    string //
+	Explain string //
 }
 
-// readingColumns holds the columns for the table reading.
-var readingColumns = ReadingColumns{
-	Id:         "id",
-	Name:       "name",
-	Author:     "author",
-	Status:     "status",
-	FinishedAt: "finished_at",
+// wordColumns holds the columns for the table word.
+var wordColumns = WordColumns{
+	Id:      "id",
+	Word:    "word",
+	Explain: "explain",
 }
 
-// NewReadingDao creates and returns a new DAO object for table data access.
-func NewReadingDao(handlers ...gdb.ModelHandler) *ReadingDao {
-	return &ReadingDao{
+// NewWordDao creates and returns a new DAO object for table data access.
+func NewWordDao(handlers ...gdb.ModelHandler) *WordDao {
+	return &WordDao{
 		group:    "default",
-		table:    "reading",
-		columns:  readingColumns,
+		table:    "word",
+		columns:  wordColumns,
 		handlers: handlers,
 	}
 }
 
 // DB retrieves and returns the underlying raw database management object of the current DAO.
-func (dao *ReadingDao) DB() gdb.DB {
+func (dao *WordDao) DB() gdb.DB {
 	return g.DB(dao.group)
 }
 
 // Table returns the table name of the current DAO.
-func (dao *ReadingDao) Table() string {
+func (dao *WordDao) Table() string {
 	return dao.table
 }
 
 // Columns returns all column names of the current DAO.
-func (dao *ReadingDao) Columns() ReadingColumns {
+func (dao *WordDao) Columns() WordColumns {
 	return dao.columns
 }
 
 // Group returns the database configuration group name of the current DAO.
-func (dao *ReadingDao) Group() string {
+func (dao *WordDao) Group() string {
 	return dao.group
 }
 
 // Ctx creates and returns a Model for the current DAO. It automatically sets the context for the current operation.
-func (dao *ReadingDao) Ctx(ctx context.Context) *gdb.Model {
+func (dao *WordDao) Ctx(ctx context.Context) *gdb.Model {
 	model := dao.DB().Model(dao.table)
 	for _, handler := range dao.handlers {
 		model = handler(model)
@@ -82,6 +78,6 @@ func (dao *ReadingDao) Ctx(ctx context.Context) *gdb.Model {
 //
 // Note: Do not commit or roll back the transaction in function f,
 // as it is automatically handled by this function.
-func (dao *ReadingDao) Transaction(ctx context.Context, f func(ctx context.Context, tx gdb.TX) error) (err error) {
+func (dao *WordDao) Transaction(ctx context.Context, f func(ctx context.Context, tx gdb.TX) error) (err error) {
 	return dao.Ctx(ctx).Transaction(ctx, f)
 }

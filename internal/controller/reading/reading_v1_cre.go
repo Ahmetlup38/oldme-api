@@ -2,6 +2,7 @@ package reading
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/oldme-git/oldme-api/api/reading/v1"
 	"github.com/oldme-git/oldme-api/internal/logic/reading"
@@ -12,7 +13,7 @@ func (c *ControllerV1) Cre(ctx context.Context, req *v1.CreReq) (res *v1.CreRes,
 	err = reading.Cre(ctx, &entity.Reading{
 		Name:       req.Name,
 		Author:     req.Author,
-		Status:     uint(req.Status),
+		Status:     strconv.Itoa(int(req.Status)),
 		FinishedAt: req.FinishedAt,
 	})
 	return nil, err

@@ -32,3 +32,4 @@ redis:
 
 # 固定的saying tag_id
 sayingTagId: 17
+poemTagId: 17

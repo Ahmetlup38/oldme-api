@@ -18,4 +18,5 @@ import (
 	_ "github.com/oldme-git/oldme-api/internal/logic/sentence"
 	_ "github.com/oldme-git/oldme-api/internal/logic/tag"
 	_ "github.com/oldme-git/oldme-api/internal/logic/tag_grp"
+	_ "github.com/oldme-git/oldme-api/internal/logic/word"
 )

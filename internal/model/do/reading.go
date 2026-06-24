@@ -15,6 +15,6 @@ type Reading struct {
 	Id         interface{} //
 	Name       interface{} // 书名
 	Author     interface{} // 作者
-	Status     interface{} // 状态: 1完结 2在读 3弃读
+	Status     interface{} // 状态: 1弃读 2完结 9在读
 	FinishedAt *gtime.Time // 读完时间
 }

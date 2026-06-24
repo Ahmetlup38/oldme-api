@@ -2,6 +2,7 @@ package app
 
 import (
 	"github.com/gogf/gf/v2/frame/g"
+
 	"github.com/oldme-git/oldme-api/internal/model/entity"
 )
 
@@ -39,18 +40,23 @@ type (
 		Id         uint   `json:"id"`
 		Name       string `json:"name" sm:"书名"`
 		Author     string `json:"author" sm:"作者"`
-		Status     uint   `json:"status" sm:"状态 1弃读 2完结 9在读"`
+		Status     string `json:"status" sm:"状态 1弃读 2完结 9在读"`
 		FinishedAt string `json:"finished_at" sm:"完结时间"`
 	}
 )
 
 type (
-	SentenceReq struct {
-		g.Meta `path:"sentence" method:"get" sm:"随机查询句子组" tags:"app"`
+	DayReq struct {
+		g.Meta `path:"day" method:"get" sm:"随机查询每日阅读的词语" tags:"app"`
 	}
 
-	SentenceRes struct {
-		Poem  string `json:"poem"`
-		Slang string `json:"slang"`
+	DayRes struct {
+		Poem     string     `json:"poem"`
+		WordList []WordList `json:"word"`
+	}
+
+	WordList struct {
+		Word    string `json:"word"`
+		Explain string `json:"explain"`
 	}
 )

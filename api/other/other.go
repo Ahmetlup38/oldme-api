@@ -14,5 +14,5 @@ type IOtherApp interface {
 	Saying(ctx context.Context, req *app.SayingReq) (res *app.SayingRes, err error)
 	Link(ctx context.Context, req *app.LinkReq) (res *app.LinkRes, err error)
 	Reading(ctx context.Context, req *app.ReadingReq) (res *app.ReadingRes, err error)
-	Sentence(ctx context.Context, req *app.SentenceReq) (res *app.SentenceRes, err error)
+	Day(ctx context.Context, req *app.DayReq) (res *app.DayRes, err error)
 }
