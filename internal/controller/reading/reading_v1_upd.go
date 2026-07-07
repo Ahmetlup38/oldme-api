@@ -2,7 +2,6 @@ package reading
 
 import (
 	"context"
-	"strconv"
 
 	"github.com/oldme-git/oldme-api/api/reading/v1"
 	"github.com/oldme-git/oldme-api/internal/logic/reading"
@@ -14,7 +13,7 @@ func (c *ControllerV1) Upd(ctx context.Context, req *v1.UpdReq) (res *v1.UpdRes,
 		Id:         uint(req.Id),
 		Name:       req.Name,
 		Author:     req.Author,
-		Status:     strconv.Itoa(int(req.Status)),
+		Status:     uint(req.Status),
 		FinishedAt: req.FinishedAt,
 	})
 	return nil, err
