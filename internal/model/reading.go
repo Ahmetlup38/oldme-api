@@ -1,5 +1,7 @@
 package model
 
+type ReadingStatus uint
+
 var StatusText = map[uint]string{
 	10: "弃读",
 	15: "特殊书类",
