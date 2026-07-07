@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/oldme-git/oldme-api/internal/logic/reading"
+	"github.com/oldme-git/oldme-api/internal/model"
 
 	"github.com/oldme-git/oldme-api/api/other/app"
 )
@@ -21,6 +22,7 @@ func (c *ControllerApp) Reading(ctx context.Context, req *app.ReadingReq) (res *
 			Name:       v.Name,
 			Author:     v.Author,
 			Status:     v.Status,
+			StatusText: model.StatusText[v.Status],
 			FinishedAt: v.FinishedAt.Layout(time.DateOnly),
 		})
 	}
