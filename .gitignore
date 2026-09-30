@@ -18,9 +18,9 @@ main
 output/
 manifest/output/
 temp/
-/main.exe
 log
-/*.exe~
 static
 /oldme-api
 linux_amd64
+*.exe
+/*.exe~
